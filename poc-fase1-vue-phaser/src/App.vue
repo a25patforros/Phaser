@@ -9,6 +9,7 @@ const color = ref('');
 // Booleà per muntar/desmuntar el joc i verificar onMounted / onUnmounted
 const mostrarJoc = ref(true);
 const estat = ref('Disponible');
+const pausa=ref('false');
 </script>
 
 <template>
@@ -28,10 +29,14 @@ const estat = ref('Disponible');
       <button @click="mostrarJoc = !mostrarJoc" id="btnMostrar">
         {{ mostrarJoc ? 'Amaga el llenç' : 'Mostra el llenç' }}
       </button>
+
+      <button @click="pausa = !pausa" id="btnPausar">
+        {{ pausa ? 'Reprèn' : 'Pausa' }}
+      </button>
     </div>
 
     <!-- Passem 'nom' cap avall amb :nomUsuari i controlem el cicle amb v-if -->
-    <PhaserCanvas v-if="mostrarJoc" :nomUsuari="nom" :colorAvatar="color" :estat="estat"/>
+    <PhaserCanvas v-if="mostrarJoc" :nomUsuari="nom" :colorAvatar="color" :estat="estat" :pausa="pausa"/>
   </main>
 </template>
 
@@ -40,7 +45,7 @@ const estat = ref('Disponible');
     margin-bottom: 25px;
     margin-top: 20px;
   }
-  #btnMostrar, #selectorColor, #selectEstat{
+  #btnMostrar, #selectorColor, #selectEstat, #btnPausar{
     margin-left: 15px;
   }
 </style>

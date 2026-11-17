@@ -30,6 +30,7 @@ export class MainScene extends Phaser.Scene {
         this.textEstat.setPosition(this.avatar.x, this.avatar.y - 33);
     }
 
+    
     actualitzarNom(nouNom) {
      // ?. evita errors si l'escena encara carrega; || 'Anònim' evita text buit
      this.etiqueta?.setText(nouNom || 'Anònim');

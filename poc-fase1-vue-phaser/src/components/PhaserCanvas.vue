@@ -4,7 +4,7 @@ import { ref, watch, onMounted, onUnmounted } from 'vue';
 import Phaser from 'phaser';
 import { MainScene } from '../game/MainScene';
 
-const props = defineProps(['nomUsuari', 'colorAvatar', 'estat']);//Rep la prop des d'App.vue
+const props = defineProps(['nomUsuari', 'colorAvatar', 'estat', 'pausa']);//Rep la prop des d'App.vue
 const contenidor = ref(null); 
 let game = null;              
 
@@ -31,13 +31,25 @@ watch(() => props.nomUsuari, (nouNom) => {
   const escena = game?.scene.getScene('MainScene');
   escena?.actualitzarNom(nouNom);
 });
+
 watch(() => props.colorAvatar, (nouColor) =>{
   const escena = game?.scene.getScene('MainScene');
   escena?.actualitzarColor(nouColor);
 });
+
 watch(() => props.estat, (nouEstat) =>{
   const escena = game?.scene.getScene('MainScene');
   escena?.actualitzarEstat(nouEstat);
 });
+
+watch(() => props.pausa, (estaPausat) =>{
+  const escena =  game?.scene.getScene('MainScene');
+  if(estaPausat){
+    escena?.scene.pause();
+  }else{
+    escena?.scene.resume();
+  }
+});
+
 </script>
 <template><div ref="contenidor"></div></template>
