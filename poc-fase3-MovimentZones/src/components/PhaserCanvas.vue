@@ -1,7 +1,7 @@
 <script setup>
     import { ref, onMounted, onUnmounted } from 'vue';
     import Phaser from 'phaser';
-    import { MapScene } from '../game/MapScene';
+    import { OfficeScene } from '../game/OfficeScene';
 
     // Declarem l'esdeveniment que emetrem cap al component pare (App.vue)
     const emit = defineEmits(['mapaCarregat']);
@@ -11,17 +11,17 @@
     onMounted(() => {
         game = new Phaser.Game({
             type: Phaser.AUTO,
-            width: 640, height: 480,    // Mida exacta de 20x15 rajoles de 32x32 px
+            width: 640, height: 480,
             backgroundColor: '#0f172a',
-            pixelArt: true,             // Evita vores borroses entre rajoles (Phaser 4)
+            pixelArt: true,             
+            physics: {
+                default: 'arcade',
+                arcade: { gravity: { y: 0 } }
+            },
             parent: contenidor.value,
-            scene: [MapScene]
+            scene: [OfficeScene]
         });
-
-        // Escoltem l'esdeveniment emès des de MapScene.create() i el passem a App.vue
-        game.events.on('mapa-carregat', (elements) => {
-            emit('mapaCarregat', elements);
-        });
+        game.events.on('canvi-zona', (zona) => emit('canviZona', zona));
     });
 
     onUnmounted(() => game?.destroy(true));
