@@ -19,12 +19,7 @@ export class MapScene extends Phaser.Scene{
 
     create(){
         const map = this.make.tilemap({key:'mapa_oficina'});
-         // PROVA TEMPORAL
-    this.add.rectangle(100, 100, 100, 100, 0xff0000);
-    this.add.text(50, 200, 'PHASER FUNCIONA', {
-        fontSize: '24px',
-        color: '#ffffff'
-    });
+         
         const bathroom = map.addTilesetImage('clean_publicbathroom_set', 'bathroom');
         const computer = map.addTilesetImage('computer_front', 'computer');
         const floors = map.addTilesetImage('floors', 'floors');
