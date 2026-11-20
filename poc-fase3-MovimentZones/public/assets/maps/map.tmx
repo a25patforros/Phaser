@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="25">
+ <editorsettings>
+  <export target="public/assets/mapa.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="meeting_room_tileset" tilewidth="32" tileheight="32" tilecount="16" columns="8">
+  <image source="../tilesets/meeting_room_tileset.png" width="256" height="64"/>
+ </tileset>
+ <tileset firstgid="17" name="meeting_room_props" tilewidth="32" tileheight="32" tilecount="30" columns="15">
+  <image source="../tilesets/meeting_room_props.png" width="493" height="74"/>
+ </tileset>
+ <tileset firstgid="47" name="walls" tilewidth="32" tileheight="32" tilecount="32" columns="8">
+  <image source="../tilesets/walls.png" width="256" height="128"/>
+ </tileset>
+ <tileset firstgid="79" name="floors" tilewidth="32" tileheight="32" tilecount="3" columns="3">
+  <image source="../tilesets/floors.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="82" name="clean_publicbathroom_set" tilewidth="32" tileheight="32" tilecount="120" columns="12">
+  <image source="../tilesets/clean_publicbathroom_set.png" width="384" height="320"/>
+ </tileset>
+ <tileset firstgid="202" name="meeting_room_preview" tilewidth="32" tileheight="32" tilecount="81" columns="9">
+  <image source="../tilesets/meeting_room_preview.png" width="288" height="288"/>
+ </tileset>
+ <tileset firstgid="283" name="computer_front" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../tilesets/computer_front.png" width="32" height="34"/>
+ </tileset>
+ <tileset firstgid="284" name="office_chair_back" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../tilesets/office_chair_back.png" width="34" height="42"/>
+ </tileset>
+ <tileset firstgid="285" name="office_chair_front" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../tilesets/office_chair_front.png" width="34" height="58"/>
+ </tileset>
+ <layer id="1" name="Terra" width="20" height="15">
+  <data encoding="csv">
+79,79,79,79,79,79,80,80,80,80,80,80,80,80,81,81,81,81,81,81,
+79,79,79,79,79,79,80,80,80,80,80,80,80,80,81,81,81,81,81,81,
+79,79,79,79,79,79,79,80,80,80,80,80,80,80,81,81,81,81,81,81,
+79,79,79,79,79,79,79,80,80,80,80,80,80,80,81,81,81,81,81,81,
+79,79,79,79,79,79,79,80,80,80,80,80,80,80,81,81,81,81,81,81,
+79,79,79,79,79,79,79,80,80,80,80,80,80,80,81,81,81,81,81,81,
+79,79,79,79,79,79,79,80,80,80,80,80,80,80,81,81,81,81,81,81,
+80,80,80,80,80,80,80,80,80,80,80,80,80,80,81,81,81,81,81,81,
+81,81,81,81,81,81,80,80,80,80,80,80,80,80,1,1,1,1,1,1,
+222,222,222,222,222,222,81,80,80,80,80,80,1,1,1,1,1,1,1,1,
+222,222,222,222,222,222,222,80,80,80,80,80,1,1,1,1,1,1,1,1,
+222,222,222,222,222,222,222,80,80,80,80,80,80,80,1,1,1,1,1,1,
+222,222,222,222,222,222,222,80,80,80,80,80,80,1,1,1,1,1,1,1,
+222,222,222,222,222,222,222,80,80,80,80,80,80,1,1,1,1,1,1,1,
+222,222,222,222,222,222,222,80,80,80,80,80,80,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer id="5" name="Mobiliari0" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,205,206,207,0,0,0,0,0,0,0,0,
+22,0,0,0,0,0,0,0,0,214,215,216,0,0,0,0,0,0,0,0,
+22,0,0,285,0,0,26,0,0,0,0,0,0,0,0,0,0,139,0,152,
+37,0,0,0,0,0,41,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,284,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,129,
+0,0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,205,206,207,0,0,0,0,0,0,0,0,152,152,103,103,103,103,0,
+0,0,214,215,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,
+23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,
+38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+37,0,284,0,284,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Parets" width="20" height="15">
+  <data encoding="csv">
+48,49,49,49,49,49,4,49,49,49,3,49,49,4,3,49,49,49,49,52,
+5,6,6,6,6,6,7,6,6,65,6,6,6,7,6,6,6,6,6,7,
+8,0,0,0,0,0,9,0,0,0,0,0,0,9,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,9,0,0,0,0,0,60,
+8,0,0,0,0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,9,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,60,
+2,3,3,3,3,49,52,0,0,0,0,0,0,9,11,11,68,12,68,71,
+5,6,6,6,6,65,57,0,0,0,0,0,0,0,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,60,
+8,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,60,
+8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+10,11,68,68,11,68,71,12,12,12,12,12,12,68,68,68,68,68,68,71
+</data>
+ </layer>
+ <layer id="4" name="Mobiliari" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,205,206,207,209,210,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,214,215,216,218,219,110,110,110,110,110,0,
+0,0,0,0,0,0,0,0,222,223,224,225,227,228,122,122,122,122,122,0,
+0,0,17,18,19,0,0,0,231,232,233,234,235,0,0,0,0,0,0,0,
+0,0,32,33,34,0,0,0,240,241,242,243,244,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,249,250,251,252,253,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,258,259,260,261,262,0,0,0,0,0,0,0,
+0,0,205,206,207,209,210,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,214,215,216,218,219,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,227,228,0,0,222,223,224,225,226,0,0,0,0,0,0,
+0,0,18,0,18,0,0,22,0,231,232,233,234,235,0,0,0,0,0,0,
+0,0,0,0,0,0,0,37,0,240,241,242,243,244,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,249,250,251,252,253,0,0,0,0,0,0,
+0,0,18,0,18,0,0,0,0,258,259,260,261,262,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="Mobiliari1" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,132,135,134,135,134,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,145,147,146,147,146,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,158,159,158,159,158,0,
+0,0,0,283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,283,0,283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,284,0,284,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,283,0,283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="7" name="Objectes">
+  <object id="11" x="574.667" y="418.667" width="34.6667" height="29.3333">
+   <properties>
+    <property name="spawn" value="spawn"/>
+   </properties>
+  </object>
+  <object id="12" x="10.6667" y="6.66667" width="204" height="222.667">
+   <properties>
+    <property name="aforament" type="int" value="3"/>
+    <property name="nomSala" value="sala reunions"/>
+    <property name="tipus" value="zona"/>
+   </properties>
+  </object>
+  <object id="13" x="324" y="-84"/>
+  <object id="14" x="132" y="325.25" width="24.5" height="7.5">
+   <properties>
+    <property name="tipus" value="monitor"/>
+    <property name="titol" value="pantallaCodi"/>
+   </properties>
+  </object>
+  <object id="20" x="17.3333" y="238.667" width="193.333" height="225.333">
+   <properties>
+    <property name="aforament" type="int" value="6"/>
+    <property name="nomSala" value="Sala Tècnics"/>
+    <property name="tipus" value="zona"/>
+   </properties>
+  </object>
+  <object id="23" x="449.333" y="16" width="174.667" height="221.333">
+   <properties>
+    <property name="aforament" type="int" value="6"/>
+    <property name="nomSala" value="Lavabos"/>
+    <property name="tipus" value="zona"/>
+   </properties>
+  </object>
+  <object id="24" x="315" y="127" width="16" height="8.5">
+   <properties>
+    <property name="tipus" value="monitor"/>
+    <property name="titol" value="Pantalla Info"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
