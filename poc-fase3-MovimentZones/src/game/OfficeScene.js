@@ -26,6 +26,8 @@ export class OfficeScene extends Phaser.Scene{
 
     create(){
         const map = this.make.tilemap({ key: 'mapa_oficina' });
+        this.zones = [];
+
         const bathroom = map.addTilesetImage('clean_publicbathroom_set', 'bathroom');
         const computer = map.addTilesetImage('computer_front', 'computer');
         const floors = map.addTilesetImage('floors', 'floors');
@@ -56,11 +58,12 @@ export class OfficeScene extends Phaser.Scene{
 
         const capaTerra = map.createLayer('Terra', tilesets, 0, 0);
         const capaMobiliari0 = map.createLayer('Mobiliari0', tilesets, 0, 0);
-        const capaParets = map.createLayer('Parets', tilesets, 0, 0);
+        this.capaParets = map.createLayer('Parets', tilesets, 0, 0);
         const capaMobiliari = map.createLayer('Mobiliari', tilesets, 0, 0);
         const capaMobiliari1 = map.createLayer('Mobiliari1', tilesets, 0, 0);
 
-        capaParets?.setCollisionByProperty({ collides: true });
+        this.capaParets?.setCollisionByProperty({ Collides: true });
+        
 
         // Llegim la capa d'objectes
         const capaObjectes = map.getObjectLayer('Objectes');
@@ -76,20 +79,58 @@ export class OfficeScene extends Phaser.Scene{
             // Si l'objecte és el spawn, creem l'avatar
             if (props.spawn === 'spawn') {
                 this.jugador = this.physics.add.sprite(cx, cy, 'george', 0);
+
+                this.jugador.body.setSize(16, 12);
+                this.jugador.body.setOffset(16, 32);
+
+                this.jugador.setCollideWorldBounds(true);
+
+                //this.physics.world.createDebugGraphic();
+
+                if (this.capaParets) {
+                    this.physics.add.collider(this.jugador, this.capaParets);
+                }
             }
 
-            if(props.tipus === 'zona'){
-                this.add.rectangle(cx, cy, obj.width, obj.height, 0x10b981, 0.22).setStrokeStyle(2, 0x10b981);
+            if (props.tipus === 'zona') {
+                const rect = new Phaser.Geom.Rectangle(
+                    obj.x,
+                    obj.y,
+                    obj.width,
+                    obj.height
+                );
 
-                this.add.text(cx, cy, props.nomSala || 'Zona', { fontSize: '13px', color: '#a7f3d0' }).setOrigin(0.5);
+                this.zones.push({
+                    nom: props.nomSala || 'Sala',
+                    rect
+                });
 
-                elementsDetectats.push({ 
-                    tipus: 'Zona', 
+                this.add.rectangle(
+                    cx,
+                    cy,
+                    obj.width,
+                    obj.height,
+                    0x10b981,
+                    0.18
+                ).setStrokeStyle(1.5, 0x10b981);
+
+                this.add.text(
+                    cx,
+                    obj.y + 12,
+                    props.nomSala || 'Sala',
+                    {
+                        fontSize: '11px',
+                        color: '#a7f3d0'
+                    }
+                ).setOrigin(0.5);
+
+                elementsDetectats.push({
+                    tipus: 'Zona',
                     nom: props.nomSala || 'Sense nom',
                     aforament: props.aforament || 0
                 });
-
             }
+
 
             if (props.tipus === 'monitor') {
                 this.add.rectangle(cx, cy, 28, 20, 0xf59e0b).setStrokeStyle(2, 0xffffff);
@@ -97,6 +138,8 @@ export class OfficeScene extends Phaser.Scene{
                 elementsDetectats.push({ tipus: 'Monitor', nom: props.titol || 'Pantalla' });
             }
         });
+
+        this.zonaActual = null;
 
         //animacions george
         this.direccio = 'avall';
@@ -162,17 +205,40 @@ export class OfficeScene extends Phaser.Scene{
      this.jugador.setVelocity(vel.x, vel.y);
  
      // Triem l'animació segons cap on camina; si s'atura, deixem l'última mirada
-     if (vx !== 0 || vy !== 0) {
+    if (vx !== 0 || vy !== 0) {
        if (Math.abs(vx) > Math.abs(vy)) this.direccio = vx < 0 ? 'esquerra' : 'dreta';
        else this.direccio = vy < 0 ? 'amunt' : 'avall';
        this.jugador.anims.play(`caminar-${this.direccio}`, true); // true = no reiniciïs si ja sona
-     } else {
+    } else {
        this.jugador.anims.stop();
        this.jugador.setFrame(this.frameQuiets[this.direccio]);
-     }
-     this.etiqueta.setPosition(this.jugador.x, this.jugador.y - 30);
+    }
+    this.etiqueta.setPosition(this.jugador.x, this.jugador.y - 30);
+    this.etiqueta.setPosition(this.jugador.x, this.jugador.y - 30);
+
+    this.comprovarZones();
    }
 
+    comprovarZones() {
+        const peuY = this.jugador.y + 14;
+
+        const trobada = this.zones.find((z) =>
+            Phaser.Geom.Rectangle.Contains(
+                z.rect,
+                this.jugador.x,
+                peuY
+            )
+        ) || null;
+
+        if (trobada?.nom !== this.zonaActual?.nom) {
+            this.zonaActual = trobada;
+
+            this.game.events.emit(
+                'canvi-zona',
+                trobada ? { nom: trobada.nom } : null
+            );
+        }
+    }
 
 // Mètode auxiliar per llegir les propietats de Tiled
     obtenirPropietats(obj){
